@@ -6,16 +6,17 @@
 //  Copyright (c) 2014 Ajay. All rights reserved.
 //
 
-#import "TwitTableViewController.h"
+#import "TweetTableViewContoller.h"
 #import "TwitterTableViewCell.h"
 #import "ODRefreshControl.h"
 
 
-@interface TwitTableViewController ()
+@interface TweetTableViewContoller ()
 @property (nonatomic,strong)ODRefreshControl *refreshControl;
+
 @end
 
-@implementation TwitTableViewController
+@implementation TweetTableViewContoller
 @synthesize refreshControl = _refreshControl;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,6 +40,13 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TwitterTableViewCell" bundle:nil] forCellReuseIdentifier:@"TwitterCell"];
     _refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [_refreshControl addTarget:self action:@selector(tableviewDidBeginRefresh:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)didReceiveMemoryWarning

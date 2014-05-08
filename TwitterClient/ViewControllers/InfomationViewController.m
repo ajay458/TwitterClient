@@ -1,18 +1,18 @@
 //
-//  SettingsViewController.m
+//  InfomationViewController.m
 //  TwitterClient
 //
-//  Created by Apple on 07/05/14.
+//  Created by Apple on 08/05/14.
 //  Copyright (c) 2014 Ajay. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "InfomationViewController.h"
 
-@interface SettingsViewController ()
+@interface InfomationViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation InfomationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -43,13 +43,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSLog(@"%s",__func__);
 }
-
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-     NSLog(@"%s",__func__);
-}
-
+*/
 
 @end
