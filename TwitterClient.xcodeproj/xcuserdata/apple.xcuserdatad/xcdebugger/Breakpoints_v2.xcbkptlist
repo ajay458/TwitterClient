@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TwitterClient/ViewControllers/SettingsViewController.m"
-            timestampString = "421258960.096554"
+            filePath = "TwitterClient/OtherFiles/TwitterCommunicator.m"
+            timestampString = "421528425.087992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-requestForTweetsWithBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TwitterClient/ViewControllers/SettingsViewController.m"
-            timestampString = "421259035.376555"
+            filePath = "TwitterClient/OtherFiles/TwitterCommunicator.m"
+            timestampString = "421526630.740067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-performSegueWithIdentifier:sender:"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-requestForTwitterAccountsAndDetails"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TwitterClient/OtherFiles/TwitterCommunicator.m"
+            timestampString = "421528425.087992"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-requestForTweetsWithBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

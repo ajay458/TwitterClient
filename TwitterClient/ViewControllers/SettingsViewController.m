@@ -7,9 +7,11 @@
 //
 
 #import "SettingsViewController.h"
+#import "AsyncImageView.h"
+#import "TwitterCommunicator.h"
 
 @interface SettingsViewController ()
-
+@property (nonatomic,weak)IBOutlet AsyncImageView *userProfileImageView;
 @end
 
 @implementation SettingsViewController
@@ -27,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _userProfileImageView.imageURL = [NSURL URLWithString:[[TwitterCommunicator sharedInstance] getUserImageUrl]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,17 +42,17 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"%s",__func__);
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    NSLog(@"%s",__func__);
+//}
 
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-     NSLog(@"%s",__func__);
-}
+//- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+//{
+//     NSLog(@"%s",__func__);
+//}
 
 
 @end

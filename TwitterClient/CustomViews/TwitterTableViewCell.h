@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TwitterTableViewCell : UITableViewCell
-
+#import "Tweet.h"
+@interface TwitterTableViewCell : UITableViewCell<UIWebViewDelegate>
+- (void)setTweetValuesToCellComponents:(Tweet*)userTweet;
 @end

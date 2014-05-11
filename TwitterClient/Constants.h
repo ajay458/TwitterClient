@@ -23,4 +23,10 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == 568)
+
+
+
+#define ACCOUNT_ERROR       @"Add account in settings"
+#define FAILED_TWEET_ERROR  @"Failed to get tweets."
+
 @end

@@ -9,15 +9,18 @@
 #import "TweetTableViewContoller.h"
 #import "TwitterTableViewCell.h"
 #import "ODRefreshControl.h"
+#import "TwitterCommunicator.h"
 
 
 @interface TweetTableViewContoller ()
 @property (nonatomic,strong)ODRefreshControl *refreshControl;
+@property (nonatomic,strong)NSArray *tweetsInfoArray;
 
 @end
 
 @implementation TweetTableViewContoller
 @synthesize refreshControl = _refreshControl;
+@synthesize tweetsInfoArray = _tweetsInfoArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -60,14 +63,26 @@
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        // [self fetchTweets];
+        [[TwitterCommunicator sharedInstance] requestForTweetsWithBlock:^(id tweetsArray, NSString *errorString) {
+            _tweetsInfoArray = [NSMutableArray arrayWithArray:tweetsArray];
+            dispatch_async(dispatch_get_main_queue(), ^{// fecthing main queue to update main thread
+                
+                [self.tableView reloadData];
+                [refreshControl endRefreshing];
+                
+            });
+        }];
         NSLog(@"%s",__func__);
-        [refreshControl endRefreshing];
+        
     });
     
 }
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 //#warning Potentially incomplete method implementation.
@@ -79,7 +94,7 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return _tweetsInfoArray.count;
 }
 
 
@@ -94,58 +109,12 @@
         cell = [[TwitterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    
+    [cell setTweetValuesToCellComponents:[_tweetsInfoArray objectAtIndex:indexPath.row]];
+    
     return cell;
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

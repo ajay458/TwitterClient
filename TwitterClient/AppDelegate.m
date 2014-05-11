@@ -7,13 +7,13 @@
 //
 
 #import "AppDelegate.h"
-
+#import "TwitterCommunicator.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+    [[TwitterCommunicator sharedInstance] requestForTwitterAccountsAndDetails];
     return YES;
 }
 							
