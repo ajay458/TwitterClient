@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[TwitterCommunicator sharedInstance] requestForTwitterAccountsAndDetails];
+    //[[TwitterCommunicator sharedInstance] requestForTwitterAccountsAndDetails];
     return YES;
 }
 							

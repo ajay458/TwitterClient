@@ -29,4 +29,6 @@
 #define ACCOUNT_ERROR       @"Add account in settings"
 #define FAILED_TWEET_ERROR  @"Failed to get tweets."
 
+
+#define ACCESS_TOKEN        @"SavedAccessHTTPBody"
 @end
