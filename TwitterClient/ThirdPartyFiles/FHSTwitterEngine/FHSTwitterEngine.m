@@ -783,8 +783,6 @@ id removeNull(id rootObject) {
 }
 
 - (id)getProfileImageForUsername:(NSString *)username andSize:(FHSTwitterEngineImageSize)size {
-    size    = FHSTwitterEngineImageSizeNormal;
-    username = @"ajaypasumarthi";
     if (username.length == 0) {
         return [NSError badRequestError];
     }

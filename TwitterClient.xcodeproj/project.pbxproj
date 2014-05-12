@@ -32,6 +32,8 @@
 		186D1CD9191BE76B000DABB0 /* InfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D1CD8191BE76B000DABB0 /* InfomationViewController.m */; };
 		18AA3D79191FE41400F0619F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AA3D78191FE41400F0619F /* AsyncImageView.m */; };
 		18AA3D7C191FECBE00F0619F /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AA3D7B191FECBE00F0619F /* Tweet.m */; };
+		18ED05471921379F00B895CA /* pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAC92D1921354400232394 /* pacifico.ttf */; };
+		18ED054A192144FC00B895CA /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED0549192144FC00B895CA /* WebViewController.m */; };
 		18FA3F36191D193100A94DE0 /* TwitterCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FA3F35191D193100A94DE0 /* TwitterCommunicator.m */; };
 		18FA3F38191D1ADD00A94DE0 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FA3F37191D1ADD00A94DE0 /* Accounts.framework */; };
 		18FA3F3A191D210F00A94DE0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FA3F39191D210F00A94DE0 /* Social.framework */; };
@@ -87,6 +89,9 @@
 		18AA3D78191FE41400F0619F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		18AA3D7A191FECBE00F0619F /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		18AA3D7B191FECBE00F0619F /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		18CAC92D1921354400232394 /* pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pacifico.ttf; sourceTree = "<group>"; };
+		18ED0548192144FC00B895CA /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		18ED0549192144FC00B895CA /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		18FA3F34191D193100A94DE0 /* TwitterCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterCommunicator.h; sourceTree = "<group>"; };
 		18FA3F35191D193100A94DE0 /* TwitterCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterCommunicator.m; sourceTree = "<group>"; };
 		18FA3F37191D1ADD00A94DE0 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -169,6 +174,7 @@
 		1847D21F191A7DDA0001BBBC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18CAC92D1921354400232394 /* pacifico.ttf */,
 				186D1CD2191BE5EE000DABB0 /* Images */,
 				1847D220191A7DDA0001BBBC /* TwitterClient-Info.plist */,
 				1847D221191A7DDA0001BBBC /* InfoPlist.strings */,
@@ -234,6 +240,8 @@
 				1847D265191A99160001BBBC /* SettingsViewController.m */,
 				186D1CD7191BE76B000DABB0 /* InfomationViewController.h */,
 				186D1CD8191BE76B000DABB0 /* InfomationViewController.m */,
+				18ED0548192144FC00B895CA /* WebViewController.h */,
+				18ED0549192144FC00B895CA /* WebViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18ED05471921379F00B895CA /* pacifico.ttf in Resources */,
 				1847D234191A7DDA0001BBBC /* Images.xcassets in Resources */,
 				1847D223191A7DDA0001BBBC /* InfoPlist.strings in Resources */,
 				186D1CD5191BE5EE000DABB0 /* white_patch.png in Resources */,
@@ -394,6 +403,7 @@
 				186D1CD9191BE76B000DABB0 /* InfomationViewController.m in Sources */,
 				1847D254191A7EB20001BBBC /* ODRefreshControl.m in Sources */,
 				18524E7819207F1800CFBAC6 /* FHSStream.m in Sources */,
+				18ED054A192144FC00B895CA /* WebViewController.m in Sources */,
 				18FA3F36191D193100A94DE0 /* TwitterCommunicator.m in Sources */,
 				18524E7919207F1800CFBAC6 /* FHSTwitterEngine.m in Sources */,
 				1847D266191A99160001BBBC /* SettingsViewController.m in Sources */,

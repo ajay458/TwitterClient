@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface InfomationViewController : UIViewController
-
+@property (nonatomic,strong)NSString *informationString;
 @end

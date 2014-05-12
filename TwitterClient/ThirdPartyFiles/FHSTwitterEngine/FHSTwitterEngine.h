@@ -75,12 +75,12 @@ extern NSString * const FHSErrorDomain;
 
 @protocol FHSTwitterEngineAccessTokenDelegate <NSObject>
 
-- (NSString *)loadAccessToken;
+
 - (void)storeAccessToken:(NSString *)accessToken;
 
 @optional
 - (void)twitterEngineControllerDidCancel;
-
+- (NSString *)loadAccessToken;
 @end
 
 @interface FHSTwitterEngine : NSObject

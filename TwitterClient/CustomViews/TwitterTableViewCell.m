@@ -17,6 +17,7 @@
 @end
 
 @implementation TwitterTableViewCell
+@synthesize delegate;
 
 
 - (void)awakeFromNib
@@ -26,6 +27,10 @@
     _tweetWebView.delegate = self;
     [_userImage.layer setCornerRadius:_userImage.frame.size.width/2];
     [_userImage setClipsToBounds:YES];
+    UIFont* pacificoFont = [UIFont fontWithName:@"pacifico"
+                                           size:15];
+    [_lblUserName setFont:pacificoFont];
+    [_lblUserName setTextColor:[UIColor lightGrayColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -34,7 +39,7 @@
 
     // Configure the view for the selected state
 }
-//https://api.twitter.com/1.1/users/show.json?screen_name=%@
+
 
 - (void)setTweetValuesToCellComponents:(Tweet*)userTweet
 {
@@ -50,5 +55,42 @@
 
 #pragma mark UIWebViewDelegate
 
-
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked){
+        
+        if([self.delegate respondsToSelector:@selector(urlClicked:)])
+        {
+            [self.delegate urlClicked:request.URL];//Handle External URL here
+            return NO;
+        }
+        
+    }
+    
+    return YES;
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    CGSize mWebViewTextSize = [webView sizeThatFits:CGSizeMake(1.0f, 1.0f)]; 
+    
+    CGRect mWebViewFrame = webView.frame;
+    
+    
+    mWebViewFrame.size.height = mWebViewTextSize.height;
+    
+    webView.frame = mWebViewFrame;
+    
+    
+    //Disable bouncing in webview
+    for (id subview in webView.subviews)
+    {
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+        {
+            [subview setBounces:NO];
+        }
+    }
+    
+}
 @end

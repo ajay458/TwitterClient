@@ -31,4 +31,10 @@
 
 
 #define ACCESS_TOKEN        @"SavedAccessHTTPBody"
+
+//segues identifiers
+
+#define ABOUT       @"About"
+#define PRIVACY     @"Privacy"
+#define TERMS       @"Terms"
 @end

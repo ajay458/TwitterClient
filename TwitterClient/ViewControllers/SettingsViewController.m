@@ -10,12 +10,19 @@
 #import "AsyncImageView.h"
 #import "TwitterCommunicator.h"
 #import "FHSTwitterEngine.h"
+#import "InfomationViewController.h"
 
 @interface SettingsViewController ()<FHSTwitterEngineAccessTokenDelegate>
 @property (nonatomic,weak)IBOutlet AsyncImageView *userProfileImageView;
+@property (nonatomic,weak)IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btnSignin;
+@property (weak,nonatomic)IBOutlet UIView *userInfoBG;
+@property (nonatomic,assign)BOOL isAnimationNeeded;
 - (IBAction)signInButtonPressed:(id)sender;
 @end
+
+static  NSString *consumerKey = @"Xg3ACDprWAH8loEPjMzRg";
+static  NSString *secretKey = @"9LwYDxw1iTc6D9ebHdrYCZrJP4lJhQv5uf4ueiPHvJ0";
 
 @implementation SettingsViewController
 
@@ -32,10 +39,46 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _userProfileImageView.imageURL = [NSURL URLWithString:[[TwitterCommunicator sharedInstance] getUserImageUrl]];
-    [[FHSTwitterEngine sharedEngine]permanentlySetConsumerKey:@"Xg3ACDprWAH8loEPjMzRg" andSecret:@"9LwYDxw1iTc6D9ebHdrYCZrJP4lJhQv5uf4ueiPHvJ0"];
+    
+    [[FHSTwitterEngine sharedEngine]permanentlySetConsumerKey:consumerKey andSecret:secretKey];
     [[FHSTwitterEngine sharedEngine]setDelegate:self];
     [[FHSTwitterEngine sharedEngine]loadAccessToken];
+
+    
+        [self updateUSerInfoComponents];
+    
+}
+
+- (void)updateUSerInfoComponents
+{
+    NSString *userName = [[FHSTwitterEngine sharedEngine] authenticatedUsername];
+    if(userName)
+    {
+
+        [_btnSignin setTitle:@"SignOut" forState:UIControlStateNormal];
+        _userInfoBG.hidden = NO;
+        _userNameLabel.text = userName;
+        _userProfileImageView.image = [[FHSTwitterEngine sharedEngine] getProfileImageForUsername:userName andSize:FHSTwitterEngineImageSizeNormal];
+        [_userProfileImageView.layer setCornerRadius:_userProfileImageView.frame.size.width/2];
+        [_userProfileImageView setClipsToBounds:YES];
+        [[NSUserDefaults standardUserDefaults]setObject:userName forKey:@"userName"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        
+    }
+    else
+    {
+
+        [_btnSignin setTitle:@"Signin" forState:UIControlStateNormal];
+        _userInfoBG.hidden = YES;
+        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"userName"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+
+        
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,23 +93,54 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"%s",__func__);
-}
-
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-     NSLog(@"%s",__func__);
+    InfomationViewController *destinationVC = [segue destinationViewController];
+    if([segue.identifier isEqualToString:ABOUT])
+    {
+        destinationVC.navigationItem.title = ABOUT;
+        destinationVC.informationString = @"content about application";
+        
+    }
+    else if ([segue.identifier isEqualToString:PRIVACY])
+    {
+        destinationVC.navigationItem.title = PRIVACY;
+        destinationVC.informationString = @"content about privacy";
+    }
+    else if ([segue.identifier isEqualToString:TERMS])
+    {
+        destinationVC.navigationItem.title = TERMS;
+        destinationVC.informationString = @"content about application terms";
+    }
 }
 
 - (IBAction)signInButtonPressed:(id)sender {
-    UIViewController *loginController = [[FHSTwitterEngine sharedEngine]loginControllerWithCompletionHandler:^(BOOL success) {
-        NSLog(success?@"L0L success":@"O noes!!! Loggen faylur!!!");
-        //[_theTableView reloadData];
-    }];
-    [self presentViewController:loginController animated:YES completion:nil];
+    
+    UIButton *selctedButton = (UIButton*)sender;
+    if([selctedButton.titleLabel.text isEqualToString:@"Signin"])
+    {
+        UIViewController *loginController = [[FHSTwitterEngine sharedEngine]loginControllerWithCompletionHandler:^(BOOL success) {
+            if(success)
+            {
+                [self updateUSerInfoComponents];
+                
+            }
+            
+        }];
+        [self presentViewController:loginController animated:YES completion:nil];
+ 
+    }
+    
+    else
+    {
+        [[FHSTwitterEngine sharedEngine] clearAccessToken];
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *each in cookieStorage.cookies) {
+            // put a check here to clear cookie url which starts with twitter and then delete it
+            [cookieStorage deleteCookie:each];
+        }
+        [self updateUSerInfoComponents];
+    }
 }
+
 
 
 - (void)storeAccessToken:(NSString *)accessToken {

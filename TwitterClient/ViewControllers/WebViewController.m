@@ -1,19 +1,19 @@
 //
-//  InfomationViewController.m
+//  WebViewController.m
 //  TwitterClient
 //
-//  Created by Apple on 08/05/14.
+//  Created by Apple on 12/05/14.
 //  Copyright (c) 2014 Ajay. All rights reserved.
 //
 
-#import "InfomationViewController.h"
+#import "WebViewController.h"
 
-@interface InfomationViewController ()
-@property (nonatomic,weak)IBOutlet UITextView *infotmationTextView;
+@interface WebViewController ()
+@property (nonatomic,weak)IBOutlet UIWebView *webPage;
 @end
 
-@implementation InfomationViewController
-@synthesize informationString;
+@implementation WebViewController
+@synthesize url;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,7 +27,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _infotmationTextView.text = self.informationString;
+    [_webPage loadRequest:[[NSURLRequest alloc] initWithURL:self.url]];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_webPage stopLoading];
+    [_webPage loadRequest:nil];
 }
 
 - (void)didReceiveMemoryWarning

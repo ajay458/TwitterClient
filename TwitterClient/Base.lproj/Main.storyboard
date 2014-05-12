@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -67,7 +67,7 @@
                                 <rect key="frame" x="0.0" y="70" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Adam Smith" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kWK-Dl-xXC" customClass="UIbu">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Adam Smith" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kWK-Dl-xXC">
                                         <rect key="frame" x="17" y="62" width="286" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -102,7 +102,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dTl-5n-L1a" kind="push" id="Adw-Kk-Hpj"/>
+                                            <segue destination="dTl-5n-L1a" kind="push" identifier="About" id="Adw-Kk-Hpj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4my-SU-viG">
@@ -118,7 +118,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dTl-5n-L1a" kind="push" id="9IH-rs-cyY"/>
+                                            <segue destination="dTl-5n-L1a" kind="push" identifier="Privacy" id="9IH-rs-cyY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JAs-oD-WBi">
@@ -134,7 +134,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dTl-5n-L1a" kind="push" id="e9e-It-Of6"/>
+                                            <segue destination="dTl-5n-L1a" kind="push" identifier="Terms" id="e9e-It-Of6"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="MNb-FZ-uDC">
@@ -150,10 +150,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yfk-A2-hyJ">
-                                <rect key="frame" x="20" y="213" width="280" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Yfk-A2-hyJ">
+                                <rect key="frame" x="0.0" y="213" width="315" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Signin">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -167,6 +169,8 @@
                     <navigationItem key="navigationItem" id="v0k-cD-1uF"/>
                     <connections>
                         <outlet property="btnSignin" destination="Yfk-A2-hyJ" id="Ywj-aq-TaV"/>
+                        <outlet property="userInfoBG" destination="VPM-jX-51j" id="x6Z-06-wXP"/>
+                        <outlet property="userNameLabel" destination="kWK-Dl-xXC" id="ZOZ-VY-0qp"/>
                         <outlet property="userProfileImageView" destination="cZj-zr-e0K" id="erE-6q-u7r"/>
                     </connections>
                 </viewController>
@@ -183,7 +187,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="flE-2x-siC">
-                                <rect key="frame" x="0.0" y="66" width="320" height="454"/>
+                                <rect key="frame" x="20" y="70" width="275" height="349"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -194,12 +198,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Yw-tt-B9x"/>
+                    <connections>
+                        <outlet property="infotmationTextView" destination="flE-2x-siC" id="ce8-0g-ntp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmg-le-H4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-75" y="-211"/>
         </scene>
-        <!--Tweet Table View Contoller - Title-->
+        <!--Tweet Table View Contoller - Tweets-->
         <scene sceneID="vj9-EF-q39">
             <objects>
                 <tableViewController id="Dh3-ye-h7r" customClass="TweetTableViewContoller" sceneMemberID="viewController">
@@ -213,11 +220,35 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Tweets" id="GmM-9t-eKn"/>
-                    <navigationItem key="navigationItem" title="Title" id="HHk-NW-GaT"/>
+                    <navigationItem key="navigationItem" title="Tweets" id="HHk-NW-GaT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YiC-MT-qnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-570" y="-1008"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="EJ5-gt-F4V">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="Mvn-7T-M4e" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y4K-0g-Ka9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="dLR-pU-gdI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webPage" destination="dLR-pU-gdI" id="Ujh-MN-bHf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMa-er-azi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-218" y="-1033"/>
         </scene>
     </scenes>
     <resources>
@@ -229,6 +260,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Adw-Kk-Hpj"/>
+        <segue reference="e9e-It-Of6"/>
     </inferredMetricsTieBreakers>
 </document>

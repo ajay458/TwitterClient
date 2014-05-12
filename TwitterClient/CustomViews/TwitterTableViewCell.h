@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+
+@protocol TwitterTableViewCellDelegate <NSObject>
+@optional
+- (void)urlClicked:(NSURL*)url;
+
+@end
+
+
 @interface TwitterTableViewCell : UITableViewCell<UIWebViewDelegate>
 - (void)setTweetValuesToCellComponents:(Tweet*)userTweet;
+
+@property (nonatomic,unsafe_unretained)id<TwitterTableViewCellDelegate>delegate;
 @end
