@@ -17,7 +17,8 @@
 
 @end
 
-
+//api key Mh9LZCFpWixOi0A6O3oiu4uXi
+//api secret VvWUY4zsCH9Xy2uJGWyH1Vbd9PHzkALlilL7g78tRyCaE5G366
 @implementation TwitterCommunicator
 
 
